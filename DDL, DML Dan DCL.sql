@@ -72,9 +72,20 @@ values (1, 1), (2, 2), (3, 3),(4,4);
 select * from schedule;
 
 -- nomor 7
-update schedule 
+update schedule
+join students_schedule ss on schedule.id = ss.schedule_id
 set date = '2022-01-02', time='2022-01-02 12:30:00'
-where id = 1 ;
+where ss.student_id = 1 ;
+
+update schedule 
+join students_schedule ss on schedule.id = ss.schedule_id
+set date = '2022-01-03', time ='2022-01-03 10:20:08'
+where ss.student_id = 2 ;
+
+update schedule 
+join students_schedule ss on schedule.id = ss.schedule_id
+set date = '2022-01-04', time ='2022-01-04 09:01:00'
+where ss.student_id = 3 ;
 
 
 -- DCL ---
