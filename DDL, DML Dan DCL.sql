@@ -1,3 +1,4 @@
+create database designDatabase;
 use designDatabase;
 
 -- DDL 
