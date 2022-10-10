@@ -49,7 +49,7 @@ update students set full_name 	  = 'Arya Ramdani',
 select s.id, c.name, s.date, s.time  from students_schedule as ss
 left join schedule as s on ss.schedule_id = s.id
 left join course as c on c.id = s.course_id
-left join students st on ss.student_id = st.id
+left join students as st on ss.student_id = st.id
 where student_id = 1;
 
 -- nomor 5
