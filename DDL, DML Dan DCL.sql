@@ -1,3 +1,4 @@
+create database designDatabase;
 use designDatabase;
 
 -- DDL 
@@ -46,10 +47,11 @@ update students set full_name 	  = 'Arya Ramdani',
 			where id  = 4;
 					
 -- nomor 4
-select s.id, c.name, s.date, s.time  from students_schedule as ss
+select s.id, st.full_name, c.name, s.date, s.time  
+from students_schedule as ss
 left join schedule as s on ss.schedule_id = s.id
 left join course as c on c.id = s.course_id
-left join students st on ss.student_id = st.id
+left join students as st on ss.student_id = st.id
 where student_id = 1;
 
 -- nomor 5
@@ -74,16 +76,16 @@ select * from schedule;
 update schedule
 join students_schedule ss on schedule.id = ss.schedule_id
 set date = '2022-01-02', time='2022-01-02 12:30:00'
-where id = 1 ;
+where ss.student_id = 1 ;
 
 update schedule 
 join students_schedule ss on schedule.id = ss.schedule_id
-set date = '2022-01-03', time ='2022-01-03 10:20:07'
+set date = '2022-01-03', time ='2022-01-03 10:20:08'
 where ss.student_id = 2 ;
 
 update schedule 
 join students_schedule ss on schedule.id = ss.schedule_id
-set date = '2022-01-04', time ='2022-01-04 09:00:00'
+set date = '2022-01-04', time ='2022-01-04 09:01:00'
 where ss.student_id = 3 ;
 
 
@@ -95,7 +97,7 @@ create user upstream@localhost identified by 'masuk123';
 create user dream@localhost identified by 'tama123';
 
 -- memberikan semua akses tabel kepada user 
-grant all privileges on designdatabase to 'bigadmin'@'localhost';
+grant all privileges on designdatabase to 'admin'@'localhost';
 
 -- memberi hak akses tabel kepada user 
 grant all privileges on designdatabase.students to 'admin'@'localhost';
